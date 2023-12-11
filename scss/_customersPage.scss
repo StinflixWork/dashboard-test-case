@@ -1,4 +1,5 @@
 @import '_variables.scss';
+@import '_mixins.scss';
 
 .customers {
     padding-inline: 70px 95px;
@@ -108,13 +109,19 @@
     th,
     td {
         border-bottom: 1px solid #eee;
-
-        &:not(:last-child) {
-            padding-inline-end: 10px;
-        }
+        padding-inline: 15px;
 
         &:last-child {
             text-align: center;
+
+            span {
+                display: inline-block;
+                max-width: 84px;
+                width: 100%;
+                border-radius: 4px;
+                padding-inline: 14px;
+                padding-block: 4px;
+            }
         }
     }
 }
@@ -138,8 +145,8 @@
 }
 
 .pagination-dashboard-customers__item {
-    padding-block: 6px;
-    padding-inline: 9px;
+    width: 25px;
+    height: 25px;
     border-radius: 4px;
     border: 1px solid #EEE;
     background-color: #F5F5F5;
@@ -159,19 +166,62 @@
     }
 }
 
-@media (max-width: 1099.98px) {
-    .customers {
-        padding-inline: 60px;
+.arrow-left-icon {
+    @include menuIcon('../img/product/arrow-left.svg')
+}
+
+.arrow-right-icon {
+    @include menuIcon('../img/product/arrow-right.svg')
+}
+
+.arrow-left-icon,
+.arrow-right-icon {
+    width: 100%;
+    height: 100%;
+    background-color: #404B52;
+    transition: background-color .3s ease-in-out;
+
+    &:hover {
+        background-color: #fff;
     }
 }
 
-@media (max-width: 949.98px) {
+[data-status='active'] span {
+    background-color: $status-active;
+    border: 1px solid #00B087;
+}
+
+[data-status='inactive'] span {
+    background-color: $status-inactive;
+    border: 1px solid #DF0404;
+}
+
+@media (max-width: 1199.98px) {
+    #table-customers {
+        td {
+            border-right: 1px solid #eee;
+        }
+
+        td,
+        th {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 1099.98px) {
+    .customers {
+        padding-inline: 30px 40px;
+    }
+}
+
+@media (max-width: 1023.98px) {
     .customers {
         padding-inline: 20px;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 859.98px) {
     #table-customers {
         th {
             display: none;
@@ -192,12 +242,16 @@
             }
 
             &:last-child {
-                text-align: start;
+                text-align: center;
+
+                span {
+                    margin-inline: auto;
+                }
             }
         }
 
         tr:not(:first-child, :last-child) {
-            border-bottom: 2px solid #000;
+            border-bottom: 3px solid #eee;
         }
     }
 }
@@ -219,5 +273,12 @@
         flex-direction: column;
         align-items: flex-start;
         row-gap: 15px;
+    }
+}
+
+@media (max-width: 399.98px) {
+    .header-customers-dashboard {
+        text-align: center;
+        align-items: center;
     }
 }
