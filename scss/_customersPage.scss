@@ -1,0 +1,223 @@
+@import '_variables.scss';
+
+.customers {
+    padding-inline: 70px 95px;
+    padding-block: 40px 36px;
+
+    .customers__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+
+        .customers__greeting {
+            color: $title-primary;
+            font-size: 1.5rem; // 24px
+        }
+    }
+}
+
+.customers__dashboard {}
+
+.dashboard-customers {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0px 10px 60px rgba(226, 236, 249, 0.50);
+    padding-inline: 38px 44px;
+    padding-block: 30px 40px;
+}
+
+.dashboard-customers__header {
+    margin-block-end: 40px;
+}
+
+.header-customers-dashboard,
+.footer-customers-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-customers-dashboard__body {}
+
+.header-customers-dashboard__title {
+    color: $title-primary;
+    font-size: 1.375rem; // 22px
+    font-weight: 600;
+    letter-spacing: -0.0138rem; // -0.22px
+
+    &:not(:last-child) {
+        margin-block-end: 6px;
+    }
+}
+
+.header-customers-dashboard__subtitle {}
+
+.header-customers-dashboard__search {
+    position: relative;
+
+    input {
+        background-color: #F9FBFF;
+        padding-block: 10px;
+        padding-inline: 40px 8px;
+        border-radius: 10px;
+
+        color: $text-primary;
+
+        &::placeholder {
+            color: $text-secondary;
+            font-size: 0.75rem; // 12px
+            letter-spacing: -0.0075rem; // -0.12px
+        }
+    }
+
+    &::before {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        inset-inline-start: 8px;
+        width: 24px;
+        height: 24px;
+        background: url('../img/product/search.svg') center 100% no-repeat;
+    }
+}
+
+
+.dashboard-customers__table {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#table-customers {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        padding-block: 14px;
+        text-align: start;
+    }
+
+    td {
+        padding-block: 24px;
+        line-height: 1.57; // 22px/14
+    }
+
+    th,
+    td {
+        border-bottom: 1px solid #eee;
+
+        &:not(:last-child) {
+            padding-inline-end: 10px;
+        }
+
+        &:last-child {
+            text-align: center;
+        }
+    }
+}
+
+.dashboard-customers__footer {
+    margin-block-start: 30px;
+}
+
+.footer-customers-dashboard {
+    gap: 20px;
+}
+
+.footer-customers-dashboard__show {}
+
+.footer-customers-dashboard__pagination {}
+
+.pagination-dashboard-customers {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination-dashboard-customers__item {
+    padding-block: 6px;
+    padding-inline: 9px;
+    border-radius: 4px;
+    border: 1px solid #EEE;
+    background-color: #F5F5F5;
+    transition: all .3s ease-in-out;
+    display: grid;
+    place-items: center;
+
+    color: #404B52;
+    font-size: 0.75rem; // 12px
+    letter-spacing: -0.0075rem; // -0.12px
+
+    &.active-pagination,
+    &:hover {
+        border: 1px solid #5932EA;
+        background-color: #5932EA;
+        color: #fff;
+    }
+}
+
+@media (max-width: 1099.98px) {
+    .customers {
+        padding-inline: 60px;
+    }
+}
+
+@media (max-width: 949.98px) {
+    .customers {
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #table-customers {
+        th {
+            display: none;
+        }
+
+        td {
+            display: grid;
+            grid-template-columns: 30% auto;
+            gap: 24px;
+            padding-block: 12px;
+            padding-inline: 12px;
+
+            &::before {
+                content: attr(data-cell) ': ';
+                font-weight: 700;
+                text-transform: capitalize;
+                color: $text-secondary;
+            }
+
+            &:last-child {
+                text-align: start;
+            }
+        }
+
+        tr:not(:first-child, :last-child) {
+            border-bottom: 2px solid #000;
+        }
+    }
+}
+
+@media (max-width: 649.98px) {
+    .footer-customers-dashboard {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 15px;
+    }
+
+    .pagination-dashboard-customers {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 549.98px) {
+    .header-customers-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 15px;
+    }
+}

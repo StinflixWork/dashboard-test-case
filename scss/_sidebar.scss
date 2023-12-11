@@ -1,0 +1,337 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+.sidebar {
+    flex: 0 1 20%;
+    display: flex;
+    flex-direction: column;
+    padding-block: 36px;
+    padding-inline: 28px;
+    background-color: #fff;
+    box-shadow: 0px 10px 60px 0px rgba(226, 236, 249, 0.50);
+    position: relative;
+}
+
+.sidebar__logo {
+    margin-block-end: 64px;
+    padding-inline-end: 20px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 5px;
+
+    img {
+        width: 37px;
+        height: 37px;
+    }
+
+    span {
+        display: inline-block;
+        color: $title-primary;
+        font-size: 1.625rem; // 26px
+        font-weight: 600;
+        letter-spacing: 0.0163rem; // 0.26px
+        position: relative;
+
+        &::before {
+            position: absolute;
+            content: 'v.01';
+            inset-block-end: 10%;
+            inset-inline-end: -15%;
+
+            color: #838383;
+            font-size: 0.625rem; // 10px
+            letter-spacing: -0.0063rem; // -0.1px
+        }
+    }
+}
+
+.sidebar__menu {}
+
+.menu {
+    flex: auto;
+}
+
+.menu__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+}
+
+.menu__item {}
+
+.menu__icon {
+    display: inline-block;
+    flex: 0 0 24px;
+    height: 24px;
+    background-color: #9197B3;
+    transition: background-color .3s ease-in-out;
+}
+
+.menu__link {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 14px;
+    border-radius: 8px;
+
+    padding-inline: 11px 8px;
+    padding-block: 11px;
+    position: relative;
+
+    transition: all .3s ease-in-out;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        inset-inline-end: 8px;
+        width: 16px;
+        height: 16px;
+        background-color: #9197B3;
+        @include menuIcon('../img/aside/links/chevron-right.svg');
+        transition: background-color .3s ease-in-out;
+    }
+
+    &.active-menu,
+    &:hover {
+        background-color: #5932EA;
+
+        .menu__link-text {
+            color: #fff;
+        }
+
+        .menu__icon {
+            background-color: #fff;
+        }
+
+        &::before {
+            background-color: #fff;
+        }
+    }
+}
+
+.menu__icon_1 {
+    @include menuIcon('../img/aside/links/01.svg');
+}
+
+.menu__icon_2 {
+    @include menuIcon('../img/aside/links/02.svg');
+}
+
+.menu__icon_3 {
+    @include menuIcon('../img/aside/links/03.svg');
+}
+
+.menu__icon_4 {
+    @include menuIcon('../img/aside/links/04.svg');
+}
+
+.menu__icon_5 {
+    @include menuIcon('../img/aside/links/05.svg');
+}
+
+.menu__icon_6 {
+    @include menuIcon('../img/aside/links/06.svg');
+}
+
+.sidebar__user {}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user__avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.user__body {}
+
+.user__name {}
+
+.user__position {
+    color: #757575;
+    font-size: 0.75rem; // 12px
+    font-weight: 400;
+    letter-spacing: 0.0075rem; // 0.12px
+}
+
+
+.burger-icon {
+    display: none;
+}
+
+@media (max-width: 1199.98px) {
+    .sidebar {
+        flex: 0 0 80px;
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .sidebar__logo {
+        padding-inline-end: 0;
+        margin-block-end: 32px;
+        justify-content: center;
+
+        span {
+            display: none;
+        }
+    }
+
+    .user {
+        flex-direction: column;
+
+        .user__body {
+            text-align: center;
+
+            .user__name:not(:last-child) {
+                margin-block-end: 4px;
+            }
+        }
+    }
+
+    .menu__link {
+        justify-content: center;
+        padding-inline: 11px;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    .menu__link-text {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        padding-block: 0;
+        flex-basis: 80px;
+        flex-direction: row;
+        column-gap: 35px;
+        align-items: center;
+    }
+
+    .menu__list {
+        flex-direction: row;
+        justify-content: center;
+        column-gap: 20px;
+
+        .menu__item {
+            flex: 0 0 42px;
+        }
+    }
+
+    .user__body {
+        display: none;
+    }
+
+    .sidebar__logo {
+        margin-block-end: 0;
+    }
+}
+
+@media (max-width: 599.98px) {
+    .sidebar {
+        justify-content: space-between;
+        padding-inline: 40px 80px;
+    }
+
+    .sidebar__menu {
+        background-color: rgba(226, 236, 249, 0.50);
+        position: fixed;
+        width: 60px;
+        height: 100%;
+        inset-block-start: 0;
+        inset-inline-end: -100%;
+        transition: all .4s ease-in-out;
+        z-index: 10;
+
+        &.show-menu {
+            inset-inline-end: 0;
+        }
+    }
+
+    .menu__list {
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .menu__item {
+            width: 42px;
+        }
+    }
+
+    .burger-icon {
+        position: absolute;
+        display: block;
+        width: 32px;
+        height: 18px;
+        inset-inline-end: 14px;
+        background-color: transparent;
+        z-index: 10;
+
+        span,
+        &::before,
+        &::after {
+            height: 10%;
+            content: '';
+            position: absolute;
+            inset-inline-start: 0;
+            background-color: #736969;
+            border-radius: 2px;
+            transition: all .3s ease-in-out;
+        }
+
+        span {
+            width: 75%;
+            inset-block-start: 50%;
+            transform: translateY(-50%);
+        }
+
+        &::before {
+            width: 100%;
+            inset-block-start: 0;
+        }
+
+        &::after {
+            inset-block-end: 0;
+            width: 35%;
+        }
+
+        &.show-menu {
+            position: fixed;
+
+            span {
+                width: 0;
+            }
+
+            &::before {
+                width: 100%;
+                inset-block-start: 50%;
+                transform: rotate(45deg) translateY(-50%);
+            }
+
+            &::after {
+                width: 100%;
+                inset-block-end: 50%;
+                transform: rotate(-45deg) translateY(50%);
+            }
+        }
+    }
+}

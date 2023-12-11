@@ -1,0 +1,19 @@
+%text-shared {
+    font-size: 14px;
+    letter-spacing: -0.0088rem; // -0.14px
+}
+
+.text-primary {
+    @extend %text-shared;
+    color: $text-primary;
+}
+
+.text-secondary {
+    @extend %text-shared;
+    color: $text-secondary;
+}
+
+.link {
+    @extend %text-shared;
+    color: $link-primary;
+}
